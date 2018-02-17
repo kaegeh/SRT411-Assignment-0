@@ -1,0 +1,172 @@
+---
+title: "SRT411A0.rmd"
+author: "Akhilesh Verma, Kulmiye Egeh"
+date: "February 16, 2018"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+###ToDo1
+```{r}
+(2016-2014)/(2014-1998)*100
+
+```
+
+###ToDo2
+```{r}
+x = (2016-2014)/(2014-1998)*100
+x
+
+```
+
+###ToDo3
+```{r}
+sum(c(4,5,8,11))
+
+```
+
+###ToDo4
+```{r}
+plot(rnorm(100))
+
+```
+
+###ToDo5
+```{r}
+?sqrt
+```
+
+###ToDo6
+```{r}
+file.create("firstscript.R")
+writeLines("plot(rnorm(100))","firstscript.R")
+source("firstscript.R")
+```
+
+###ToDo7
+```{r}
+p = seq(from = 31, to =60, by = 1)
+q = matrix(p, nrow = 6, ncol = 5)
+q
+```
+
+###ToDo8
+```{r}
+x1 = rnorm(100, 1, 100)
+x2 = rnorm(100, 1, 100)
+x3 = rnorm(100, 1, 100)
+t = data.frame(a = x1, b = x1 + x2, c = x1 + x2 + x3)
+plot(t)
+#sd(t)
+```
+
+
+###ToDo9
+```{r}
+x1 = rnorm(100, 1, 100)
+x2 = rnorm(100, 1, 100)
+x3 = rnorm(100, 1, 100)
+t = data.frame(a = x1, b = x1 + x2, c = x1 + x2 + x3)
+plot(t)
+#sd(t)
+plot(t$a, type="l", ylim=range(t), lwd=3, col=rgb(1,0,0,0.3))
+lines(t$b, type="s", lwd=2, col=rgb(0.3,0.4,0.3,0.9))
+points(t$c, pch=20, cex=4, col=rgb(0,0,1,0.3))
+
+#RGB Function creates colors
+#lwd sets the width of the line
+#pch specifies symbols to use in the graph
+#cex is a FUNCTION which specifies how big the symbols should be compared to default, e.g default = '1' , so '1.5' would be '50%' larger
+
+
+```
+
+
+###ToDo10
+```{r}
+d = read.table(file = "tst1.txt", header = TRUE)
+d$g = d$g * 5 
+write.table(d, file = "tst2.txt", row.names = FALSE)
+print(read.table(file = "tst2.txt", header = TRUE))
+#Note, you must create a file called tst1.txt to avoid errors upon compiling this code
+```
+
+
+###ToDo11
+```{r}
+mean(sqrt(c(rnorm(100))))
+#We get 'NaN' for some values because negative random numbers were also generated and they cannot be square rooted.
+```
+
+###ToDo12
+```{r}
+x=strptime(c("20180216000000", "20141205000000", "20181202000000"), format="%Y%m%d%H%M%S", tz = "EST")
+y = c(4,5,8)
+plot(x,y)
+```
+
+###ToDo13
+```{r}
+x = seq(from = 1, to = 100)
+s = c()
+for (i in 1:length(x)){
+  if(x[i] < 5){
+    s[i] = x[i]*5
+  }
+  else if (x[i] > 90){
+    s[i] = x[i]*5
+  }
+  else{
+    s[i] = x[i]*.5
+  }
+}
+s
+```
+
+###ToDo14
+```{r}
+fun1 = function(arg1, arg2)
+{
+  x = seq(from=arg1, to=arg2)
+  s = c()
+  for(i in 1:length(x))
+  {
+    if(x[i]<5)
+    {
+      s[i]=x[i]*10
+    }
+    else if(x[i]>90)
+    {
+      s[i]=x[i]*10
+    }
+    else(s[i]=x[i]*0.1)
+    {
+      
+    }
+  }
+  s
+}
+### Samples:
+fun1(10, 30)
+
+fun1(1,100)
+
+fun1(40,120)
+```
+
+###ToDo15
+```{r}
+x=c(1:100)
+ifelse(x<5, x <- x*5,ifelse(x>90, x <- x*5,x <- x*0.1 ))
+```
